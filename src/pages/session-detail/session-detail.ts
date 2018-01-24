@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 
-import { ConferenceData } from '../../providers/conference-data';
+import { TrocaDiscoData } from '../../providers/troca-disco-data';
 
 @Component({
   selector: 'page-session-detail',
@@ -11,7 +11,7 @@ export class SessionDetailPage {
   session: any;
 
   constructor(
-    public dataProvider: ConferenceData,
+    public dataProvider: TrocaDiscoData,
     public navParams: NavParams
   ) {}
 

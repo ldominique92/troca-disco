@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { ConferenceData } from '../../providers/conference-data';
+import { TrocaDiscoData } from '../../providers/troca-disco-data';
 
 @Component({
-  selector: 'page-speaker-detail',
-  templateUrl: 'speaker-detail.html'
+  selector: 'page-disc-detail',
+  templateUrl: 'disc-detail.html'
 })
-export class SpeakerDetailPage {
-  speaker: any;
+export class DiscDetailPage {
+  disc: any;
 
-  constructor(public dataProvider: ConferenceData, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public dataProvider: TrocaDiscoData, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewWillEnter() {
     this.dataProvider.load().subscribe((data: any) => {
-      if (data && data.speakers) {
-        for (const speaker of data.speakers) {
-          if (speaker && speaker.id === this.navParams.data.speakerId) {
-            this.speaker = speaker;
+      if (data && data.discs) {
+        for (const disc of data.discs) {
+          if (disc && disc.id === this.navParams.data.discId) {
+            this.disc = disc;
             break;
           }
         }

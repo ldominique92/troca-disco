@@ -11,11 +11,9 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { TutorialPage } from '../pages/tutorial/tutorial';
-import { DiscoverPage } from '../pages/discover/discover';
-import { SearchPage } from '../pages/search/search';
 import { SupportPage } from '../pages/support/support';
 
-import { AppData } from '../providers/app-data';
+import { TrocaDiscoData } from '../providers/troca-disco-data';
 import { UserData } from '../providers/user-data';
 
 export interface PageInterface {
@@ -32,7 +30,7 @@ export interface PageInterface {
 @Component({
   templateUrl: 'app.template.html'
 })
-export class ConferenceApp {
+export class TrocaDiscoApp {
   // the root nav is a child of the root app component
   // @ViewChild(Nav) gets a reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
@@ -41,19 +39,16 @@ export class ConferenceApp {
   // the left menu only works after login
   // the login page disables the left menu
   appPages: PageInterface[] = [
-    { title: 'Discover', name: 'TabsPage', component: TabsPage, tabComponent: DiscoverPage, index: 0, icon: 'calendar' },
-    { title: 'Search', name: 'TabsPage', component: TabsPage, tabComponent: SearchPage, index: 1, icon: 'contacts' },
-    { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 2, icon: 'information-circle' }
+    { title: 'Sobre o Troca Discos', name: 'AboutPage', component: AboutPage, icon: 'information-circle' },
+    { title: 'Suporte', name: 'SupportPage', component: SupportPage, icon: 'help' }
   ];
   loggedInPages: PageInterface[] = [
-    { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'person' },
-    { title: 'Support', name: 'SupportPage', component: SupportPage, icon: 'help' },
-    { title: 'Logout', name: 'TabsPage', component: TabsPage, icon: 'log-out', logsOut: true }
+    { title: 'Minha Conta', name: 'AccountPage', component: AccountPage, icon: 'person' },
+    { title: 'Sair', name: 'TabsPage', component: TabsPage, icon: 'log-out', logsOut: true }
   ];
   loggedOutPages: PageInterface[] = [
-    { title: 'Login', name: 'LoginPage', component: LoginPage, icon: 'log-in' },
-    { title: 'Support', name: 'SupportPage', component: SupportPage, icon: 'help' },
-    { title: 'Signup', name: 'SignupPage', component: SignupPage, icon: 'person-add' }
+    { title: 'Entrar', name: 'LoginPage', component: LoginPage, icon: 'log-in' },
+    { title: 'Criar Conta', name: 'SignupPage', component: SignupPage, icon: 'person-add' }
   ];
   rootPage: any;
 
@@ -62,7 +57,7 @@ export class ConferenceApp {
     public userData: UserData,
     public menu: MenuController,
     public platform: Platform,
-    public confData: ConferenceData,
+    public tdData: TrocaDiscoData,
     public storage: Storage,
     public splashScreen: SplashScreen
   ) {
@@ -78,8 +73,8 @@ export class ConferenceApp {
         this.platformReady()
       });
 
-    // load the conference data
-    confData.load();
+    // load the app data
+    tdData.load();
 
     // decide which menu items should be hidden by current login status stored in local storage
     this.userData.hasLoggedIn().then((hasLoggedIn) => {

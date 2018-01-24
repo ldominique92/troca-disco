@@ -4,7 +4,7 @@ import { NavParams } from 'ionic-angular';
 
 import { AboutPage } from '../about/about';
 import { DiscoverPage } from '../discover/discover';
-import { SpeakerListPage } from '../speaker-list/speaker-list';
+import { SearchPage } from '../search/search';
 
 @Component({
   templateUrl: 'tabs-page.html'
@@ -12,7 +12,7 @@ import { SpeakerListPage } from '../speaker-list/speaker-list';
 export class TabsPage {
   // set the root pages for each tab
   tab1Root: any = DiscoverPage;
-  tab2Root: any = SpeakerListPage;
+  tab2Root: any = SearchPage;
   tab3Root: any = AboutPage;
   mySelectedIndex: number;
 

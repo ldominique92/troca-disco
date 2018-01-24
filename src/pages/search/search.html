@@ -3,54 +3,54 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Speakers</ion-title>
+    <ion-title>Search</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="outer-content speaker-list">
-  <ion-list [virtualScroll]="speakers">
+<ion-content class="outer-content search">
+  <ion-list [virtualScroll]="discs">
     <ion-grid fixed>
       <ion-row align-items-stretch>
 
-        <ion-col col-12 col-md-6 align-self-stretch align-self-center *virtualItem="let speaker" approxItemHeight="457px">
+        <ion-col col-12 col-md-6 align-self-stretch align-self-center *virtualItem="let disc" approxItemHeight="457px">
 
-          <ion-card class="speaker-card">
+          <ion-card class="disc-card">
             <ion-card-header>
-              <button ion-item detail-none (click)="goToSpeakerDetail(speaker)">
+              <button ion-item detail-none (click)="goToDiscDetail(disc)">
                 <ion-avatar item-start>
-                  <img [src]="speaker.profilePic" alt="Speaker profile pic">
+                  <img [src]="disc.profilePic" alt="Disc profile pic">
                 </ion-avatar>
-                {{speaker.name}}
+                {{disc.name}}
               </button>
             </ion-card-header>
 
             <ion-card-content class="outer-content">
               <ion-list>
-                <button ion-item *ngFor="let session of speaker.sessions" (click)="goToSessionDetail(session)">
+                <button ion-item *ngFor="let session of disc.sessions" (click)="goToSessionDetail(session)">
                   <h3>{{session.name}}</h3>
                 </button>
 
-                <button ion-item (click)="goToSpeakerDetail(speaker)">
-                  <h3>About {{speaker.name}}</h3>
+                <button ion-item (click)="goToDiscDetail(disc)">
+                  <h3>About {{disc.name}}</h3>
                 </button>
               </ion-list>
             </ion-card-content>
 
             <ion-row no-padding>
               <ion-col col-12 col-lg-auto text-center text-lg-left>
-                <button ion-button clear small color="primary" icon-start (click)="goToSpeakerTwitter(speaker)">
+                <button ion-button clear small color="primary" icon-start (click)="goToDiscTwitter(disc)">
                   <ion-icon name="logo-twitter"></ion-icon>
                   Tweet
                 </button>
               </ion-col>
               <ion-col col-12 col-lg-auto text-center>
-                <button ion-button clear small color="primary" icon-start (click)="openSpeakerShare(speaker)">
+                <button ion-button clear small color="primary" icon-start (click)="openDiscShare(disc)">
                   <ion-icon name='share-alt'></ion-icon>
                   Share
                 </button>
               </ion-col>
               <ion-col col-12 col-lg-auto text-center text-lg-right>
-                <button ion-button clear small color="primary" icon-start (click)="openContact(speaker)">
+                <button ion-button clear small color="primary" icon-start (click)="openContact(disc)">
                   <ion-icon name='chatboxes'></ion-icon>
                   Contact
                 </button>

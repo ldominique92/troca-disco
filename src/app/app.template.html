@@ -10,20 +10,9 @@
     </ion-header>
 
     <ion-content class="outer-content">
-
       <ion-list>
         <ion-list-header>
-          Navigate
-        </ion-list-header>
-        <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
-          <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
-          {{p.title}}
-        </button>
-      </ion-list>
-
-      <ion-list>
-        <ion-list-header>
-          Account
+          Minha Conta
         </ion-list-header>
         <button ion-item menuClose *ngFor="let p of loggedOutPages" (click)="openPage(p)">
           <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
@@ -33,15 +22,18 @@
 
       <ion-list>
         <ion-list-header>
-          Tutorial
+          Ajuda
         </ion-list-header>
+        <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
+          <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
+          {{p.title}}
+        </button>
         <button ion-item menuClose (click)="openTutorial()">
           <ion-icon item-start name="hammer"></ion-icon>
-          Show Tutorial
+          Mostrar Tutorial
         </button>
       </ion-list>
     </ion-content>
-
   </ion-menu>
 
   <!-- logged in menu -->
@@ -57,16 +49,6 @@
 
       <ion-list>
         <ion-list-header>
-          Navigate
-        </ion-list-header>
-        <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
-          <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
-          {{p.title}}
-        </button>
-      </ion-list>
-
-      <ion-list>
-        <ion-list-header>
           Account
         </ion-list-header>
         <button ion-item menuClose *ngFor="let p of loggedInPages" (click)="openPage(p)">
@@ -77,14 +59,17 @@
 
       <ion-list>
         <ion-list-header>
-          Tutorial
+          Ajuda
         </ion-list-header>
+        <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
+          <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
+          {{p.title}}
+        </button>
         <button ion-item menuClose (click)="openTutorial()">
           <ion-icon item-start name="hammer"></ion-icon>
-          Show Tutorial
+          Mostrar Tutorial
         </button>
       </ion-list>
-
     </ion-content>
 
   </ion-menu>

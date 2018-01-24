@@ -10,7 +10,7 @@ import 'rxjs/add/observable/of';
 
 
 @Injectable()
-export class AppData {
+export class TrocaDiscoData {
   data: any;
 
   constructor(public http: Http, public user: UserData) { }
@@ -26,7 +26,7 @@ export class AppData {
 
   processData(data: any) {
     // just some good 'ol JS fun with objects and arrays
-    // build up the data by linking speakers to sessions
+    // build up the data by linking discs to sessions
     this.data = data.json();
 
     this.data.tracks = [];
@@ -37,14 +37,14 @@ export class AppData {
       day.groups.forEach((group: any) => {
         // loop through each session in the timeline group
         group.sessions.forEach((session: any) => {
-          session.speakers = [];
-          if (session.speakerNames) {
-            session.speakerNames.forEach((speakerName: any) => {
-              let speaker = this.data.speakers.find((s: any) => s.name === speakerName);
-              if (speaker) {
-                session.speakers.push(speaker);
-                speaker.sessions = speaker.sessions || [];
-                speaker.sessions.push(session);
+          session.discs = [];
+          if (session.discNames) {
+            session.discNames.forEach((discName: any) => {
+              let disc = this.data.discs.find((s: any) => s.name === discName);
+              if (disc) {
+                session.discs.push(disc);
+                disc.sessions = disc.sessions || [];
+                disc.sessions.push(session);
               }
             });
           }
@@ -130,9 +130,9 @@ export class AppData {
     session.hide = !(matchesQueryText && matchesTracks && matchesSegment);
   }
 
-  getSpeakers() {
+  getDiscs() {
     return this.load().map((data: any) => {
-      return data.speakers.sort((a: any, b: any) => {
+      return data.discs.sort((a: any, b: any) => {
         let aName = a.name.split(' ').pop();
         let bName = b.name.split(' ').pop();
         return aName.localeCompare(bName);

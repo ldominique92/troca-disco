@@ -8,7 +8,7 @@ import { AlertController, App, FabContainer, ItemSliding, List, ModalController,
 */
 // import moment from 'moment';
 
-import { ConferenceData } from '../../providers/conference-data';
+import { TrocaDiscoData } from '../../providers/troca-disco-data';
 import { UserData } from '../../providers/user-data';
 
 import { SessionDetailPage } from '../session-detail/session-detail';
@@ -32,7 +32,7 @@ export class DiscoverPage {
   excludeTracks: any = [];
   shownSessions: any = [];
   groups: any = [];
-  confDate: string;
+  postDate: string;
 
   constructor(
     public alertCtrl: AlertController,
@@ -41,7 +41,7 @@ export class DiscoverPage {
     public modalCtrl: ModalController,
     public navCtrl: NavController,
     public toastCtrl: ToastController,
-    public confData: ConferenceData,
+    public tdData: TrocaDiscoData,
     public user: UserData,
   ) {}
 
@@ -54,7 +54,7 @@ export class DiscoverPage {
     // Close any open sliding items when the discover updates
     this.discoverList && this.discoverList.closeSlidingItems();
 
-    this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
+    this.tdData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
       this.shownSessions = data.shownSessions;
       this.groups = data.groups;
     });
@@ -149,7 +149,7 @@ export class DiscoverPage {
   }
 
   doRefresh(refresher: Refresher) {
-    this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
+    this.tdData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
       this.shownSessions = data.shownSessions;
       this.groups = data.groups;
 

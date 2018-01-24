@@ -9,10 +9,10 @@ import {
 } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
-import { ConferenceData } from '../../providers/conference-data';
+import { TrocaDiscoData } from '../../providers/troca-disco-data';
 
 import { SessionDetailPage } from '../session-detail/session-detail';
-import { SpeakerDetailPage } from '../speaker-detail/speaker-detail';
+import { DiscDetailPage } from '../disc-detail/disc-detail';
 
 // TODO remove
 export interface ActionSheetButton {
@@ -24,24 +24,24 @@ export interface ActionSheetButton {
 };
 
 @Component({
-  selector: 'page-speaker-list',
-  templateUrl: 'speaker-list.html'
+  selector: 'page-search',
+  templateUrl: 'search.html'
 })
-export class SpeakerListPage {
+export class SearchPage {
   actionSheet: ActionSheet;
-  speakers: any[] = [];
+  discs: any[] = [];
 
   constructor(
     public actionSheetCtrl: ActionSheetController,
     public navCtrl: NavController,
-    public confData: ConferenceData,
+    public tdData: TrocaDiscoData,
     public config: Config,
     public inAppBrowser: InAppBrowser
   ) {}
 
   ionViewDidLoad() {
-    this.confData.getSpeakers().subscribe((speakers: any[]) => {
-      this.speakers = speakers;
+    this.tdData.getDiscs().subscribe((discs: any[]) => {
+      this.discs = discs;
     });
   }
 
@@ -49,28 +49,28 @@ export class SpeakerListPage {
     this.navCtrl.push(SessionDetailPage, { sessionId: session.id });
   }
 
-  goToSpeakerDetail(speaker: any) {
-    this.navCtrl.push(SpeakerDetailPage, { speakerId: speaker.id });
+  goToDiscDetail(disc: any) {
+    this.navCtrl.push(DiscDetailPage, { discId: disc.id });
   }
 
-  goToSpeakerTwitter(speaker: any) {
+  goToDiscTwitter(disc: any) {
     this.inAppBrowser.create(
-      `https://twitter.com/${speaker.twitter}`,
+      `https://twitter.com/${disc.twitter}`,
       '_blank'
     );
   }
 
-  openSpeakerShare(speaker: any) {
+  openDiscShare(disc: any) {
     let actionSheet = this.actionSheetCtrl.create({
-      title: 'Share ' + speaker.name,
+      title: 'Share ' + disc.name,
       buttons: [
         {
           text: 'Copy Link',
           handler: () => {
-            console.log('Copy link clicked on https://twitter.com/' + speaker.twitter);
+            console.log('Copy link clicked on https://twitter.com/' + disc.twitter);
             if ( (window as any)['cordova'] && (window as any)['cordova'].plugins.clipboard) {
               (window as any)['cordova'].plugins.clipboard.copy(
-                'https://twitter.com/' + speaker.twitter
+                'https://twitter.com/' + disc.twitter
               );
             }
           }
@@ -88,24 +88,24 @@ export class SpeakerListPage {
     actionSheet.present();
   }
 
-  openContact(speaker: any) {
+  openContact(disc: any) {
     let mode = this.config.get('mode');
 
     let actionSheet = this.actionSheetCtrl.create({
-      title: 'Contact ' + speaker.name,
+      title: 'Contact ' + disc.name,
       buttons: [
         {
-          text: `Email ( ${speaker.email} )`,
+          text: `Email ( ${disc.email} )`,
           icon: mode !== 'ios' ? 'mail' : null,
           handler: () => {
-            window.open('mailto:' + speaker.email);
+            window.open('mailto:' + disc.email);
           }
         } as ActionSheetButton,
         {
-          text: `Call ( ${speaker.phone} )`,
+          text: `Call ( ${disc.phone} )`,
           icon: mode !== 'ios' ? 'call' : null,
           handler: () => {
-            window.open('tel:' + speaker.phone);
+            window.open('tel:' + disc.phone);
           }
         } as ActionSheetButton
       ]

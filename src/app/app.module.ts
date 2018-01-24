@@ -9,7 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IonicStorageModule } from '@ionic/storage';
 
-import { ConferenceApp } from './app.component';
+import { TrocaDiscoApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
 import { PopoverPage } from '../pages/about-popover/about-popover';
@@ -25,13 +25,13 @@ import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SupportPage } from '../pages/support/support';
 
-import { ConferenceData } from '../providers/conference-data';
+import { TrocaDiscoData } from '../providers/troca-disco-data';
 import { UserData } from '../providers/user-data';
 
 
 @NgModule({
   declarations: [
-    ConferenceApp,
+    TrocaDiscoApp,
     AboutPage,
     AccountPage,
     LoginPage,
@@ -49,7 +49,7 @@ import { UserData } from '../providers/user-data';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(ConferenceApp, {}, {
+    IonicModule.forRoot(TrocaDiscoApp, {}, {
       links: [
         { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },
         { component: DiscoverPage, name: 'Discover', segment: 'discover' },
@@ -69,7 +69,7 @@ import { UserData } from '../providers/user-data';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    ConferenceApp,
+    TrocaDiscoApp,
     AboutPage,
     AccountPage,
     LoginPage,
@@ -86,7 +86,7 @@ import { UserData } from '../providers/user-data';
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ConferenceData,
+    TrocaDiscoData,
     UserData,
     InAppBrowser,
     SplashScreen
