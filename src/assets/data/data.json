@@ -2,9 +2,237 @@
     "discs": 
     [
       {
-        "id": "1",
+        "id": 1,
         "album" : {
           "id" : 1,
+          "albumName" : "Thriller",
+          "artist" : {
+            "id" : 1,
+            "name" : "Michael Jackson"
+          },
+          "year" : 1998,
+          "label" : "Sony Legacy" 
+        },
+        "boughtAt" : 2008,
+        "mainPicture" : "assets/img/discs/thriller.jpg",
+        "user" : {},
+        "sell" : true,
+        "price" : 22.5,
+        "exchange" : true,
+        "double" : false,
+        "extras" : "",
+        "location": "41.40338, 2.17403",
+        "genres": [
+          {
+            "id" : 1,
+            "name" : "Dance & Electronic"
+          },
+          {
+            "id" : 2,
+            "name" : "House"
+          },
+          {
+            "id" : 3,
+            "name" : "Disco"
+          },
+          {
+            "id" : 4,
+            "name" : "Blues"
+          }
+        ]
+    },
+    {
+        "id": 2,
+        "album" : {
+          "id" : 2,
+          "albumName" : "Led Zeppelin IV",
+          "artist" : {
+            "id" : 2,
+            "name" : "Led Zeppelin"
+          },
+          "year" : 2014,
+          "label" : "Atlantic Catalog Group" 
+        },
+        "boughtAt" : 2014,
+        "mainPicture" : "assets/img/discs/led-zeppelin-iv.jpg",
+        "user" : {},
+        "sell" : true,
+        "price" : 70.00,
+        "exchange" : false,
+        "double" : false,
+        "extras" : "",
+        "location": "41.40338, 2.17403",
+        "genres": [
+          {
+            "id" : 5,
+            "name" : "Rock"
+          },
+          {
+            "id" : 6,
+            "name" : "Pop"
+          }
+        ]
+    },
+    {
+        "id": 3,
+        "album" : {
+          "id" : 3,
+          "albumName" : "The Wall",
+          "artist" : {
+            "id" : 3,
+            "name" : "Pink Floyd"
+          },
+          "year" : 1979,
+          "label" : "Capitol" 
+        },
+        "boughtAt" : 2012,
+        "mainPicture" : "assets/img/discs/the-wall.jpg",
+        "user" : {},
+        "sell" : true,
+        "price" : 130.00,
+        "exchange" : true,
+        "double" : true,
+        "extras" : "Encarte",
+        "location": "41.40338, 2.17403",
+        "genres": [
+          {
+            "id" : 5,
+            "name" : "Rock"
+          },
+          {
+            "id" : 7,
+            "name" : "Progressive"
+          },
+          {
+            "id" : 8,
+            "name" : "Progressive Rock"
+          },
+          {
+            "id" : 6,
+            "name" : "Pop"
+          }
+        ]
+    },
+    {
+        "id": 4,
+        "album" : {
+          "id" : 4,
+          "albumName" : "The Dark Side of the Moon",
+          "artist" : {
+            "id" : 3,
+            "name" : "Pink Floyd"
+          },
+          "year" : 2016,
+          "label" : "Legacy" 
+        },
+        "boughtAt" : 2016,
+        "mainPicture" : "assets/img/discs/the-dark-side-of-the-moon.jpg",
+        "user" : {},
+        "sell" : true,
+        "price" : 96.0,
+        "exchange" : false,
+        "double" : false,
+        "extras" : "",
+        "location": "41.40338, 2.17403",
+        "genres": [
+          {
+            "id" : 5,
+            "name" : "Rock"
+          },
+          {
+            "id" : 6,
+            "name" : "Pop"
+          }
+        ]
+    },
+    {
+        "id": 5,
+        "album" : {
+          "id" : 5,
+          "albumName" : "Back in Black",
+          "artist" : {
+            "id" : 4,
+            "name" : "AC/DC"
+          },
+          "year" : 1998,
+          "label" : "Sony Legacy" 
+        },
+        "boughtAt" : 2007,
+        "mainPicture" : "assets/img/discs/thriller.jpg",
+        "user" : {},
+        "sell" : true,
+        "price" : 72.0,
+        "exchange" : true,
+        "double" : false,
+        "extras" : "",
+        "location": "41.40338, 2.17403",
+        "genres": [
+          {
+            "id" : 5,
+            "name" : "Rock"
+          },
+          {
+            "id" : 9,
+            "name" : "Hard Rock"
+          },
+          {
+            "id" : 10,
+            "name" : "Arena Rock"
+          },
+          {
+            "id" : 11,
+            "name" : "Classic Rock"
+          },
+          {
+            "id" : 12,
+            "name" : " Blues Rock"
+          }
+        ]
+    },
+    {
+        "id": 6,
+        "album" : {
+          "id" : 6,
+          "albumName" : "Highway to Hell",
+          "artist" : {
+            "id" : 4,
+            "name" : "AC/DC"
+          },
+          "year" : 1979,
+          "label" : "Epic" 
+        },
+        "boughtAt" : 2003,
+        "mainPicture" : "assets/img/discs/highway.jpg",
+        "user" : {},
+        "sell" : true,
+        "price" : 44.0,
+        "exchange" : true,
+        "double" : false,
+        "extras" : "",
+        "location": "41.40338, 2.17403",
+        "genres": [
+          {
+            "id" : 12,
+            "name" : " Blues Rock"
+          },
+          {
+            "id" : 13,
+            "name" : "Hard Rock & Metal"
+          },
+          {
+            "id" : 14,
+            "name" : "Pop Metal"
+          },
+          {
+            "id" : 10,
+            "name" : "Arena Rock"
+          }
+        ]
+    },
+    {
+        "id": 7,
+        "album" : {
+          "id" : 7,
           "albumName" : "Thriller",
           "artist" : {
             "id" : 1,
@@ -19,9 +247,27 @@
         "sell" : true,
         "price" : 22.5,
         "exchange" : true,
+        "double" : false,
+        "extras" : "",
         "location": "41.40338, 2.17403",
-        "email": "burt@example.com",
-        "phone": "+1-541-754-3010"
+        "genres": [
+          {
+            "id" : 1,
+            "name" : "Dance & Electronic"
+          },
+          {
+            "id" : 2,
+            "name" : "House"
+          },
+          {
+            "id" : 3,
+            "name" : "Disco"
+          },
+          {
+            "id" : 4,
+            "name" : "Blue"
+          }
+        ]
     }
   ]
 }
