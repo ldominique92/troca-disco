@@ -11,7 +11,25 @@
             "name" : "Michael Jackson"
           },
           "year" : 1998,
-          "label" : "Sony Legacy" 
+          "label" : "Sony Legacy",
+          "genres": [
+            {
+              "id" : 1,
+              "name" : "Dance & Electronic"
+            },
+            {
+              "id" : 2,
+              "name" : "House"
+            },
+            {
+              "id" : 3,
+              "name" : "Disco"
+            },
+            {
+              "id" : 4,
+              "name" : "Blues"
+            }
+          ] 
         },
         "boughtAt" : 2008,
         "mainPicture" : "assets/img/discs/thriller.jpg",
@@ -21,25 +39,7 @@
         "exchange" : true,
         "double" : false,
         "extras" : "",
-        "location": "41.40338, 2.17403",
-        "genres": [
-          {
-            "id" : 1,
-            "name" : "Dance & Electronic"
-          },
-          {
-            "id" : 2,
-            "name" : "House"
-          },
-          {
-            "id" : 3,
-            "name" : "Disco"
-          },
-          {
-            "id" : 4,
-            "name" : "Blues"
-          }
-        ]
+        "location": "41.40338, 2.17403"
     },
     {
         "id": 2,
@@ -51,7 +51,17 @@
             "name" : "Led Zeppelin"
           },
           "year" : 2014,
-          "label" : "Atlantic Catalog Group" 
+          "label" : "Atlantic Catalog Group",
+          "genres": [
+            {
+              "id" : 5,
+              "name" : "Rock"
+            },
+            {
+              "id" : 6,
+              "name" : "Pop"
+            }
+          ]
         },
         "boughtAt" : 2014,
         "mainPicture" : "assets/img/discs/led-zeppelin-iv.jpg",
@@ -61,17 +71,7 @@
         "exchange" : false,
         "double" : false,
         "extras" : "",
-        "location": "41.40338, 2.17403",
-        "genres": [
-          {
-            "id" : 5,
-            "name" : "Rock"
-          },
-          {
-            "id" : 6,
-            "name" : "Pop"
-          }
-        ]
+        "location": "41.40338, 2.17403"
     },
     {
         "id": 3,
@@ -83,7 +83,25 @@
             "name" : "Pink Floyd"
           },
           "year" : 1979,
-          "label" : "Capitol" 
+          "label" : "Capitol",
+          "genres": [
+            {
+              "id" : 5,
+              "name" : "Rock"
+            },
+            {
+              "id" : 7,
+              "name" : "Progressive"
+            },
+            {
+              "id" : 8,
+              "name" : "Progressive Rock"
+            },
+            {
+              "id" : 6,
+              "name" : "Pop"
+            }
+          ] 
         },
         "boughtAt" : 2012,
         "mainPicture" : "assets/img/discs/the-wall.jpg",
@@ -93,25 +111,7 @@
         "exchange" : true,
         "double" : true,
         "extras" : "Encarte",
-        "location": "41.40338, 2.17403",
-        "genres": [
-          {
-            "id" : 5,
-            "name" : "Rock"
-          },
-          {
-            "id" : 7,
-            "name" : "Progressive"
-          },
-          {
-            "id" : 8,
-            "name" : "Progressive Rock"
-          },
-          {
-            "id" : 6,
-            "name" : "Pop"
-          }
-        ]
+        "location": "41.40338, 2.17403"
     },
     {
         "id": 4,
@@ -123,7 +123,17 @@
             "name" : "Pink Floyd"
           },
           "year" : 2016,
-          "label" : "Legacy" 
+          "label" : "Legacy",
+          "genres": [
+            {
+              "id" : 5,
+              "name" : "Rock"
+            },
+            {
+              "id" : 6,
+              "name" : "Pop"
+            }
+          ] 
         },
         "boughtAt" : 2016,
         "mainPicture" : "assets/img/discs/the-dark-side-of-the-moon.jpg",
@@ -133,17 +143,7 @@
         "exchange" : false,
         "double" : false,
         "extras" : "",
-        "location": "41.40338, 2.17403",
-        "genres": [
-          {
-            "id" : 5,
-            "name" : "Rock"
-          },
-          {
-            "id" : 6,
-            "name" : "Pop"
-          }
-        ]
+        "location": "41.40338, 2.17403"
     },
     {
         "id": 5,
@@ -155,7 +155,29 @@
             "name" : "AC/DC"
           },
           "year" : 1998,
-          "label" : "Sony Legacy" 
+          "label" : "Sony Legacy",
+          "genres": [
+            {
+              "id" : 5,
+              "name" : "Rock"
+            },
+            {
+              "id" : 9,
+              "name" : "Hard Rock"
+            },
+            {
+              "id" : 10,
+              "name" : "Arena Rock"
+            },
+            {
+              "id" : 11,
+              "name" : "Classic Rock"
+            },
+            {
+              "id" : 12,
+              "name" : " Blues Rock"
+            }
+          ] 
         },
         "boughtAt" : 2007,
         "mainPicture" : "assets/img/discs/thriller.jpg",
@@ -165,29 +187,7 @@
         "exchange" : true,
         "double" : false,
         "extras" : "",
-        "location": "41.40338, 2.17403",
-        "genres": [
-          {
-            "id" : 5,
-            "name" : "Rock"
-          },
-          {
-            "id" : 9,
-            "name" : "Hard Rock"
-          },
-          {
-            "id" : 10,
-            "name" : "Arena Rock"
-          },
-          {
-            "id" : 11,
-            "name" : "Classic Rock"
-          },
-          {
-            "id" : 12,
-            "name" : " Blues Rock"
-          }
-        ]
+        "location": "41.40338, 2.17403"
     },
     {
         "id": 6,
@@ -199,7 +199,25 @@
             "name" : "AC/DC"
           },
           "year" : 1979,
-          "label" : "Epic" 
+          "label" : "Epic",
+          "genres": [
+            {
+              "id" : 12,
+              "name" : " Blues Rock"
+            },
+            {
+              "id" : 13,
+              "name" : "Hard Rock & Metal"
+            },
+            {
+              "id" : 14,
+              "name" : "Pop Metal"
+            },
+            {
+              "id" : 10,
+              "name" : "Arena Rock"
+            }
+          ] 
         },
         "boughtAt" : 2003,
         "mainPicture" : "assets/img/discs/highway.jpg",
@@ -209,25 +227,7 @@
         "exchange" : true,
         "double" : false,
         "extras" : "",
-        "location": "41.40338, 2.17403",
-        "genres": [
-          {
-            "id" : 12,
-            "name" : " Blues Rock"
-          },
-          {
-            "id" : 13,
-            "name" : "Hard Rock & Metal"
-          },
-          {
-            "id" : 14,
-            "name" : "Pop Metal"
-          },
-          {
-            "id" : 10,
-            "name" : "Arena Rock"
-          }
-        ]
+        "location": "41.40338, 2.17403"
     },
     {
         "id": 7,
@@ -239,7 +239,25 @@
             "name" : "Michael Jackson"
           },
           "year" : 1998,
-          "label" : "Sony Legacy" 
+          "label" : "Sony Legacy",
+          "genres": [
+            {
+              "id" : 1,
+              "name" : "Dance & Electronic"
+            },
+            {
+              "id" : 2,
+              "name" : "House"
+            },
+            {
+              "id" : 3,
+              "name" : "Disco"
+            },
+            {
+              "id" : 4,
+              "name" : "Blue"
+            }
+          ] 
         },
         "boughtAt" : 2007,
         "mainPicture" : "assets/img/discs/thriller.jpg",
@@ -249,25 +267,7 @@
         "exchange" : true,
         "double" : false,
         "extras" : "",
-        "location": "41.40338, 2.17403",
-        "genres": [
-          {
-            "id" : 1,
-            "name" : "Dance & Electronic"
-          },
-          {
-            "id" : 2,
-            "name" : "House"
-          },
-          {
-            "id" : 3,
-            "name" : "Disco"
-          },
-          {
-            "id" : 4,
-            "name" : "Blue"
-          }
-        ]
+        "location": "41.40338, 2.17403"
     }
   ]
 }

@@ -14,12 +14,3 @@ $categories: (
 @function auxiliary-categories() {
   @return map-remove($categories);
 }
-
-page-discover {
-  @each $track, $value in auxiliary-categories() {
-   ion-item-sliding[track=#{$track}] ion-label {
-     border-left: 2px solid $value;
-     padding-left: 10px;
-   }
-  }
-}

@@ -17,7 +17,6 @@ import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { DiscoverPage } from '../pages/discover/discover';
 import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
-import { SessionDetailPage } from '../pages/session-detail/session-detail';
 import { SignupPage } from '../pages/signup/signup';
 import { DiscDetailPage } from '../pages/disc-detail/disc-detail';
 import { SearchPage } from '../pages/search/search';
@@ -38,7 +37,6 @@ import { UserData } from '../providers/user-data';
     PopoverPage,
     DiscoverPage,
     ScheduleFilterPage,
-    SessionDetailPage,
     SignupPage,
     DiscDetailPage,
     SearchPage,
@@ -53,8 +51,7 @@ import { UserData } from '../providers/user-data';
       links: [
         { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },
         { component: DiscoverPage, name: 'Discover', segment: 'discover' },
-        { component: SessionDetailPage, name: 'SessionDetail', segment: 'sessionDetail/:sessionId' },
-        { component: ScheduleFilterPage, name: 'ScheduleFilter', segment: 'scheduleFilter' },
+         { component: ScheduleFilterPage, name: 'ScheduleFilter', segment: 'scheduleFilter' },
         { component: SearchPage, name: 'Search', segment: 'search' },
         { component: DiscDetailPage, name: 'DiscDetail', segment: 'discDetail/:discId' },
         { component: AboutPage, name: 'About', segment: 'about' },
@@ -76,7 +73,6 @@ import { UserData } from '../providers/user-data';
     PopoverPage,
     DiscoverPage,
     ScheduleFilterPage,
-    SessionDetailPage,
     SignupPage,
     DiscDetailPage,
     SearchPage,

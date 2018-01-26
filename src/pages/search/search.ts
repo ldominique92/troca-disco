@@ -10,8 +10,6 @@ import {
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { TrocaDiscoData } from '../../providers/troca-disco-data';
-
-import { SessionDetailPage } from '../session-detail/session-detail';
 import { DiscDetailPage } from '../disc-detail/disc-detail';
 
 // TODO remove
@@ -45,8 +43,8 @@ export class SearchPage {
     });
   }
 
-  goToSessionDetail(session: any) {
-    this.navCtrl.push(SessionDetailPage, { sessionId: session.id });
+  goToDetail(disc: any) {
+    this.navCtrl.push(DiscDetailPage, { discId: disc.id });
   }
 
   goToDiscDetail(disc: any) {

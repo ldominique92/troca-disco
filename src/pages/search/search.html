@@ -18,20 +18,20 @@
             <ion-card-header>
               <button ion-item detail-none (click)="goToDiscDetail(disc)">
                 <ion-avatar item-start>
-                  <img [src]="disc.profilePic" alt="Disc profile pic">
+                  <img [src]="disc.mainPicture" alt="Disc profile pic">
                 </ion-avatar>
-                {{disc.name}}
+                {{disc.albumName}}
               </button>
             </ion-card-header>
 
             <ion-card-content class="outer-content">
               <ion-list>
-                <button ion-item *ngFor="let session of disc.sessions" (click)="goToSessionDetail(session)">
-                  <h3>{{session.name}}</h3>
+                <button ion-item *ngFor="let disc of discs" (click)="goToDiscDetail(disc)">
+                  <h3>{{disc.albumName}}</h3>
                 </button>
 
                 <button ion-item (click)="goToDiscDetail(disc)">
-                  <h3>About {{disc.name}}</h3>
+                  <h3>About {{disc.albumName}}</h3>
                 </button>
               </ion-list>
             </ion-card-content>

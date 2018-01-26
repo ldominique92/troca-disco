@@ -26,115 +26,102 @@ export class TrocaDiscoData {
 
   processData(data: any) {
     // just some good 'ol JS fun with objects and arrays
-    // build up the data by linking discs to sessions
+    // build up the data by linking discs to discs
     this.data = data.json();
 
-    this.data.tracks = [];
+    this.data.genres = [];
 
-    // loop through each day in the discover
-    this.data.discover.forEach((day: any) => {
-      // loop through each timeline group in the day
-      day.groups.forEach((group: any) => {
-        // loop through each session in the timeline group
-        group.sessions.forEach((session: any) => {
-          session.discs = [];
-          if (session.discNames) {
-            session.discNames.forEach((discName: any) => {
-              let disc = this.data.discs.find((s: any) => s.name === discName);
-              if (disc) {
-                session.discs.push(disc);
-                disc.sessions = disc.sessions || [];
-                disc.sessions.push(session);
-              }
-            });
-          }
-
-          if (session.tracks) {
-            session.tracks.forEach((track: any) => {
-              if (this.data.tracks.indexOf(track) < 0) {
-                this.data.tracks.push(track);
-              }
-            });
+    // loop through each disc
+    this.data.discs.forEach((disc: any) => {
+      disc.discs = [];
+      if (disc.discNames) {
+        disc.discNames.forEach((discName: any) => {
+          let disc = this.data.discs.find((s: any) => s.albumName === discName);
+          if (disc) {
+            disc.discs.push(disc);
+            disc.discs = disc.discs || [];
+            disc.discs.push(disc);
           }
         });
-      });
+      }
+
+      if (disc.album.genres) {
+        disc.album.genres.forEach((track: any) => {
+          if (this.data.genres.indexOf(track) < 0) {
+            this.data.genres.push(track);
+          }
+        });
+      }
     });
 
     return this.data;
   }
 
-  getTimeline(dayIndex: number, queryText = '', excludeTracks: any[] = [], segment = 'all') {
+  getTimeline(queryText = '', genres: any[] = []) {
     return this.load().map((data: any) => {
-      let day = data.discover[dayIndex];
-      day.shownSessions = 0;
-
+      let info = { discs : data.discs, shownDiscs : 0 };
+      
       queryText = queryText.toLowerCase().replace(/,|\.|-/g, ' ');
       let queryWords = queryText.split(' ').filter(w => !!w.trim().length);
 
-      day.groups.forEach((group: any) => {
-        group.hide = true;
+      info.discs.forEach((disc: any) => {
+          // check if this disc should show or not
+          this.filterDisc(disc, queryWords, genres);
 
-        group.sessions.forEach((session: any) => {
-          // check if this session should show or not
-          this.filterSession(session, queryWords, excludeTracks, segment);
-
-          if (!session.hide) {
-            // if this session is not hidden then this group should show
-            group.hide = false;
-            day.shownSessions++;
+          if (!disc.hide) {
+            // if this disc is not hidden then this group should show
+            info.shownDiscs++;
           }
         });
 
-      });
-
-      return day;
+      
+      return info;
     });
   }
 
-  filterSession(session: any, queryWords: string[], excludeTracks: any[], segment: string) {
+  // TODO: filter location
+  filterDisc(disc: any, queryWords: string[], genres: string[]) {
 
     let matchesQueryText = false;
     if (queryWords.length) {
-      // of any query word is in the session name than it passes the query test
+      // of any query word is in the album name or artist name than it passes the query test
       queryWords.forEach((queryWord: string) => {
-        if (session.name.toLowerCase().indexOf(queryWord) > -1) {
+        if ((disc.album.albumName.toLowerCase().indexOf(queryWord) > -1) ||
+            (disc.album.artist.name.toLowerCase().indexOf(queryWord) > -1)) {
           matchesQueryText = true;
         }
       });
     } else {
-      // if there are no query words then this session passes the query test
+      // if there are no query words then this disc passes the query test
       matchesQueryText = true;
     }
 
-    // if any of the sessions tracks are not in the
-    // exclude tracks then this session passes the track test
-    let matchesTracks = false;
-    session.tracks.forEach((trackName: string) => {
-      if (excludeTracks.indexOf(trackName) === -1) {
-        matchesTracks = true;
-      }
-    });
-
-    // if the segement is 'favorites', but session is not a user favorite
-    // then this session does not pass the segment test
-    let matchesSegment = false;
-    if (segment === 'favorites') {
-      if (this.user.hasFavorite(session.name)) {
-        matchesSegment = true;
-      }
-    } else {
-      matchesSegment = true;
+    // if the segement is 'favorites', but disc is not a user favorite
+    // then this disc does not pass the segment test
+    let matchesGenres = false;
+    if (genres.length) {
+      // of any query word is in the album name or artist name than it passes the query test
+      genres.forEach((sGenre: string) => {
+        if (disc.album.genres.some((dGenre: any) => {
+            return dGenre.name.toLowerCase().indexOf(sGenre) == 0;
+          }))
+          matchesGenres = true;
+      });
+    }
+    else {
+      // if there are no query words then this disc passes the query test
+      matchesGenres = true;
     }
 
     // all tests must be true if it should not be hidden
-    session.hide = !(matchesQueryText && matchesTracks && matchesSegment);
+    disc.hide = !(matchesQueryText && matchesGenres);
   }
 
   getDiscs() {
     return this.load().map((data: any) => {
       return data.discs.sort((a: any, b: any) => {
-        let aName = a.name.split(' ').pop();
-        let bName = b.name.split(' ').pop();
+        let aName = a.album.albumName.split(' ').pop();
+        let bName = b.album.albumName.split(' ').pop();
         return aName.localeCompare(bName);
       });
     });
@@ -142,7 +129,7 @@ export class TrocaDiscoData {
 
   getTracks() {
     return this.load().map((data: any) => {
-      return data.tracks.sort();
+      return data.genres.sort();
     });
   }
 

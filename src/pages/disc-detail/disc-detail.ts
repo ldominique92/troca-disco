@@ -27,7 +27,7 @@ export class DiscDetailPage {
 
   }
 
-  goToSessionDetail(session: any) {
-    this.navCtrl.push('SessionDetailPage', { sessionId: session.id });
+  goToDiscDetail(disc: any) {
+    this.navCtrl.push('DiscDetailPage', { discId: disc.id });
   }
 }

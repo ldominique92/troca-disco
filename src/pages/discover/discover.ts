@@ -11,8 +11,8 @@ import { AlertController, App, FabContainer, ItemSliding, List, ModalController,
 import { TrocaDiscoData } from '../../providers/troca-disco-data';
 import { UserData } from '../../providers/user-data';
 
-import { SessionDetailPage } from '../session-detail/session-detail';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
+import { DiscDetailPage } from '../disc-detail/disc-detail';
 
 
 @Component({
@@ -28,10 +28,10 @@ export class DiscoverPage {
 
   dayIndex = 0;
   queryText = '';
-  segment = 'all';
-  excludeTracks: any = [];
-  shownSessions: any = [];
-  groups: any = [];
+  segment = 'all'; // TODO: include in search, all or only my saved
+  genres: any = [];
+  shownDiscs: any = [];
+  discs: any = [];
   postDate: string;
 
   constructor(
@@ -51,22 +51,19 @@ export class DiscoverPage {
   }
 
   updateDiscover() {
-    // Close any open sliding items when the discover updates
-    this.discoverList && this.discoverList.closeSlidingItems();
-
-    this.tdData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
-      this.shownSessions = data.shownSessions;
-      this.groups = data.groups;
+    this.tdData.getTimeline(this.queryText, this.genres).subscribe((data: any) => {
+      this.shownDiscs = data.shownDiscs;
+      this.discs = data.discs;
     });
   }
 
   presentFilter() {
-    let modal = this.modalCtrl.create(ScheduleFilterPage, this.excludeTracks);
+    let modal = this.modalCtrl.create(ScheduleFilterPage, this.genres);
     modal.present();
 
     modal.onWillDismiss((data: any[]) => {
       if (data) {
-        this.excludeTracks = data;
+        this.genres = data;
         this.updateDiscover();
       }
     });
@@ -77,7 +74,7 @@ export class DiscoverPage {
     // go to the session detail page
     // and pass in the session data
 
-    this.navCtrl.push(SessionDetailPage, { sessionId: sessionData.id, name: sessionData.name });
+    this.navCtrl.push(DiscDetailPage, { sessionId: sessionData.id, name: sessionData.name });
   }
 
   addFavorite(slidingItem: ItemSliding, sessionData: any) {
@@ -149,9 +146,9 @@ export class DiscoverPage {
   }
 
   doRefresh(refresher: Refresher) {
-    this.tdData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
-      this.shownSessions = data.shownSessions;
-      this.groups = data.groups;
+    this.tdData.getTimeline(this.queryText, this.genres).subscribe((data: any) => {
+      this.shownDiscs = data.shownDiscs;
+      this.discs = data.discs;
 
       // simulate a network request that would take longer
       // than just pulling from out local json file
@@ -159,7 +156,7 @@ export class DiscoverPage {
         refresher.complete();
 
         const toast = this.toastCtrl.create({
-          message: 'Sessions have been updated.',
+          message: 'Discs have been updated.',
           duration: 3000
         });
         toast.present();

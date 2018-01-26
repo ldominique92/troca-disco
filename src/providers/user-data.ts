@@ -15,16 +15,16 @@ export class UserData {
     public storage: Storage
   ) {}
 
-  hasFavorite(sessionName: string): boolean {
-    return (this._favorites.indexOf(sessionName) > -1);
+  hasFavorite(discName: string): boolean {
+    return (this._favorites.indexOf(discName) > -1);
   };
 
-  addFavorite(sessionName: string): void {
-    this._favorites.push(sessionName);
+  addFavorite(discName: string): void {
+    this._favorites.push(discName);
   };
 
-  removeFavorite(sessionName: string): void {
-    let index = this._favorites.indexOf(sessionName);
+  removeFavorite(discName: string): void {
+    let index = this._favorites.indexOf(discName);
     if (index > -1) {
       this._favorites.splice(index, 1);
     }

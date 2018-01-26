@@ -1,23 +1,18 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{disc?.name}}</ion-title>
+    <ion-title>{{disc?.album.albumName}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="disc-detail">
-  <div text-center *ngIf="disc">
-    <img [src]="disc.profilePic" [alt]="disc.name"><br>
-
-    <button ion-button icon-only clear small color="twitter">
-      <ion-icon name="logo-twitter"></ion-icon>
-    </button>
-    <button ion-button icon-only clear small color="github">
-      <ion-icon name="logo-github"></ion-icon>
-    </button>
-    <button ion-button icon-only clear small color="instagram">
-      <ion-icon name="logo-instagram"></ion-icon>
-    </button>
+  <div *ngIf="disc">
+    <img [src]="disc.mainPicture" [alt]="disc.album.albumName">
+    <h1>{{disc.album.albumName}}</h1>
+    <h4> {{disc.album.artist.name}}</h4>
+    <p>
+      <a *ngFor="let genre of disc?.genres" class="genre-tag">
+        {{genre.name}}
+      </a>
+    </p>
   </div>
-
-  <p>{{disc?.about}}</p>
 </ion-content>
